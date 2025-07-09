@@ -13,7 +13,7 @@ public class ModNetwork {
     public static final NetworkChannel CHANNEL = NetworkChannel.create(ResourceLocation.fromNamespaceAndPath(MOD_ID, MOD_ID + "_network"));
 
     public static void init() {
-        CHANNEL.register(PlatformBlockPacket.class, PlatformBlockPacket::encode, PlatformBlockPacket::new, PlatformBlockPacket::apply);
-        CHANNEL.register(ChangeDoorSoundPacket.class, ChangeDoorSoundPacket::encode, ChangeDoorSoundPacket::new, ChangeDoorSoundPacket::apply);
+        //CHANNEL.register(PlatformBlockPacket.class, PlatformBlockPacket::encode, PlatformBlockPacket::new, PlatformBlockPacket::apply);
+        //CHANNEL.register(ChangeDoorSoundPacket.class, ChangeDoorSoundPacket::encode, ChangeDoorSoundPacket::new, ChangeDoorSoundPacket::apply);
     }
 }

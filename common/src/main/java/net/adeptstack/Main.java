@@ -6,7 +6,6 @@ import com.simibubi.create.foundation.item.ItemDescription;
 import com.simibubi.create.foundation.item.KineticStats;
 import com.simibubi.create.foundation.item.TooltipHelper;
 import com.simibubi.create.foundation.item.TooltipModifier;
-import dev.architectury.platform.Platform;
 import net.adeptstack.blocks.doors.slidingDoor.TrainSlidingDoorBlock;
 import net.adeptstack.network.ModNetwork;
 import net.adeptstack.registry.*;
@@ -57,6 +56,6 @@ public final class Main {
     static {
         REGISTRATE.setTooltipModifierFactory(item -> {
             return new ItemDescription.Modifier(item, FontHelper.Palette.STANDARD_CREATE).andThen(TooltipModifier.mapNull(create(item)));
-        });
+        }).defaultCreativeTab(ModTabs.TRAINUTILS_TAB.getKey()); // <-----
     }
 }
