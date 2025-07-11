@@ -5,7 +5,6 @@ import net.adeptstack.blocks.doors.slidingDoor.TrainSlidingDoorBlock;
 import net.adeptstack.blocks.panelBlocks.platformBlocks.PlatformBlockCH;
 import net.adeptstack.blocks.panelBlocks.platformBlocks.PlatformBlockDE;
 import net.adeptstack.blocks.panelBlocks.platformBlocks.PlatformBlockNL;
-import net.adeptstack.network.ModNetwork;
 import net.adeptstack.network.packets.ChangeDoorSoundPacket;
 import net.adeptstack.network.packets.PlatformBlockPacket;
 import net.adeptstack.ui.screens.ChangeDoorSoundScreen;

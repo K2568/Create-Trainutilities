@@ -8,7 +8,6 @@ import com.simibubi.create.foundation.item.TooltipHelper;
 import com.simibubi.create.foundation.item.TooltipModifier;
 import de.mrjulsen.mcdragonlib.net.DLNetworkManager;
 import net.adeptstack.blocks.doors.slidingDoor.TrainSlidingDoorBlock;
-import net.adeptstack.network.ModNetwork;
 import net.adeptstack.network.packets.ChangeDoorSoundPacket;
 import net.adeptstack.network.packets.PlatformBlockPacket;
 import net.adeptstack.registry.*;

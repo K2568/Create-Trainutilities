@@ -1,22 +1,5 @@
-package net.adeptstack.network;
-
-import de.mrjulsen.mcdragonlib.client.OverlayManager;
-
-public class ModNetwork {
-    private static long currentRouteOverlayId;
-
-    public static void setRouteOverlay(long id) {
-        removeRouteOverlay();
-        currentRouteOverlayId = id;
-    }
-
-    public static void removeRouteOverlay() {
-        if (OverlayManager.has(currentRouteOverlayId)) {
-            OverlayManager.remove(currentRouteOverlayId);
-        }
-    }
-}
-
+//package net.adeptstack.network;
+//
 //import dev.architectury.networking.NetworkChannel;
 //import net.adeptstack.network.packets.ChangeDoorSoundPacket;
 //import net.adeptstack.network.packets.PlatformBlockPacket;

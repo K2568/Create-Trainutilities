@@ -3,6 +3,7 @@ package net.adeptstack.network.packets;
 import de.mrjulsen.mcdragonlib.net.BaseNetworkPacket;
 import dev.architectury.networking.NetworkManager;
 import net.adeptstack.blocks.doors.slidingDoor.TrainSlidingDoorBlock;
+import net.adeptstack.ui.screens.ChangeDoorSoundScreen;
 import net.adeptstack.utils.PlacementUtils;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.FriendlyByteBuf;
@@ -14,8 +15,10 @@ import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
 import java.util.function.Supplier;
 
 public class ChangeDoorSoundPacket extends BaseNetworkPacket<ChangeDoorSoundPacket> {
-    public final BlockPos pos;
-    public final int door_sound;
+    public BlockPos pos;
+    public int door_sound;
+
+    public ChangeDoorSoundPacket()  { }
 
     public ChangeDoorSoundPacket(RegistryFriendlyByteBuf buf) {
         this(buf.readBlockPos(), buf.readInt());
