@@ -14,12 +14,10 @@ import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
 import java.util.function.Supplier;
 
 public class ChangeDoorSoundPacket extends BaseNetworkPacket<ChangeDoorSoundPacket> {
-    public BlockPos pos;
-    public int door_sound;
+    public final BlockPos pos;
+    public final int door_sound;
 
-    public ChangeDoorSoundPacket() {}
-
-    public ChangeDoorSoundPacket(FriendlyByteBuf buf) {
+    public ChangeDoorSoundPacket(RegistryFriendlyByteBuf buf) {
         this(buf.readBlockPos(), buf.readInt());
     }
 

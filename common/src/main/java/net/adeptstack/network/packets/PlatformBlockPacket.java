@@ -14,10 +14,10 @@ import java.util.function.Supplier;
 
 public class PlatformBlockPacket extends BaseNetworkPacket<PlatformBlockPacket> {
 
-    public BlockPos pos;
-    public int signblock;
+    public final BlockPos pos;
+    public final int signblock;
 
-    public PlatformBlockPacket () { }
+    // public PlatformBlockPacket () { }
 
     public PlatformBlockPacket(FriendlyByteBuf buf) {
         this(buf.readBlockPos(), buf.readInt());
