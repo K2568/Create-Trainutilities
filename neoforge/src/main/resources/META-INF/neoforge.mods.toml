@@ -1,17 +1,17 @@
 modLoader = "javafml"
 loaderVersion = "[4,)"
 #issueTrackerURL = ""
-license = "Insert License Here"
+license = "GNU General Public License v3.0"
 
 [[mods]]
 modId = "trainutilities"
 version = "${version}"
 displayName = "Create Train Utilities"
-authors = "Me!"
+authors = "ProgrammerLP"
 description = '''
-This is an example description! Tell everyone what your mod is about!
+Mod that adds custom sliding doors with realistic opening & closing sounds and station blocks, and also building blocks for stations and trains.
 '''
-#logoFile = ""
+logoFile = "mod_icon.png"
 
 [[dependencies.trainutilities]]
 modId = "neoforge"
@@ -32,6 +32,13 @@ modId = "architectury"
 type = "required"
 versionRange = "[13.0.8,)"
 ordering = "AFTER"
+side = "BOTH"
+
+[[dependencies.trainutilities]]
+modId = "dragonlib"
+type = "required"
+versionRange = "[1.21.1-2.2.24,)"
+ordering = "BEFORE"
 side = "BOTH"
 
 [[dependencies.trainutilities]]

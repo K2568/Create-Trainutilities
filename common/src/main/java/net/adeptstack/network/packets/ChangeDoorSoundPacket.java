@@ -1,20 +1,23 @@
 package net.adeptstack.network.packets;
 
+import de.mrjulsen.mcdragonlib.net.BaseNetworkPacket;
 import dev.architectury.networking.NetworkManager;
 import net.adeptstack.blocks.doors.slidingDoor.TrainSlidingDoorBlock;
 import net.adeptstack.utils.PlacementUtils;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.FriendlyByteBuf;
+import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.DoorHingeSide;
 import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
 
 import java.util.function.Supplier;
 
-public class ChangeDoorSoundPacket {
-    public final BlockPos pos;
-    public final int door_sound;
+public class ChangeDoorSoundPacket extends BaseNetworkPacket<ChangeDoorSoundPacket> {
+    public BlockPos pos;
+    public int door_sound;
 
+    public ChangeDoorSoundPacket() {}
 
     public ChangeDoorSoundPacket(FriendlyByteBuf buf) {
         this(buf.readBlockPos(), buf.readInt());
@@ -23,11 +26,6 @@ public class ChangeDoorSoundPacket {
     public ChangeDoorSoundPacket(BlockPos pos, int door_sound) {
         this.pos = pos;
         this.door_sound = door_sound;
-    }
-
-    public void encode(FriendlyByteBuf buf) {
-        buf.writeBlockPos(pos);
-        buf.writeInt(door_sound);
     }
 
     public void apply(Supplier<NetworkManager.PacketContext> contextSupplier) {
@@ -98,5 +96,21 @@ public class ChangeDoorSoundPacket {
                 contextSupplier.get().getPlayer().level().setBlockAndUpdate(pos4, state4);
             }
         });
+    }
+
+    @Override
+    public void encode(ChangeDoorSoundPacket changeDoorSoundPacket, RegistryFriendlyByteBuf buf) {
+        buf.writeBlockPos(pos);
+        buf.writeInt(door_sound);
+    }
+
+    @Override
+    public ChangeDoorSoundPacket decode(RegistryFriendlyByteBuf buf) {
+        return new ChangeDoorSoundPacket(buf.readBlockPos(), buf.readInt());
+    }
+
+    @Override
+    public void handle(ChangeDoorSoundPacket changeDoorSoundPacket, Supplier<NetworkManager.PacketContext> supplier) {
+        apply(supplier);
     }
 }

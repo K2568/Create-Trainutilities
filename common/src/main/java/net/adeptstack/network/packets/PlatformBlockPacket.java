@@ -1,20 +1,23 @@
 package net.adeptstack.network.packets;
 
+import de.mrjulsen.mcdragonlib.net.BaseNetworkPacket;
 import dev.architectury.networking.NetworkManager;
 import net.adeptstack.blocks.panelBlocks.platformBlocks.PlatformBlockCH;
 import net.adeptstack.blocks.panelBlocks.platformBlocks.PlatformBlockDE;
 import net.adeptstack.blocks.panelBlocks.platformBlocks.PlatformBlockNL;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.FriendlyByteBuf;
+import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.world.level.block.state.BlockState;
 
 import java.util.function.Supplier;
 
-public class PlatformBlockPacket {
+public class PlatformBlockPacket extends BaseNetworkPacket<PlatformBlockPacket> {
 
-    public final BlockPos pos;
-    public final int signblock;
+    public BlockPos pos;
+    public int signblock;
 
+    public PlatformBlockPacket () { }
 
     public PlatformBlockPacket(FriendlyByteBuf buf) {
         this(buf.readBlockPos(), buf.readInt());
@@ -25,10 +28,22 @@ public class PlatformBlockPacket {
         this.signblock = signblock;
     }
 
-    public void encode(FriendlyByteBuf buf) {
+    @Override
+    public void encode(PlatformBlockPacket packet, RegistryFriendlyByteBuf buf) {
         buf.writeBlockPos(pos);
         buf.writeInt(signblock);
     }
+
+    @Override
+    public PlatformBlockPacket decode(RegistryFriendlyByteBuf buf) {
+        return new PlatformBlockPacket(buf.readBlockPos(), buf.readInt());
+    }
+
+    @Override
+    public void handle(PlatformBlockPacket platformBlockPacket, Supplier<NetworkManager.PacketContext> supplier) {
+        apply(supplier);
+    }
+
 
     public void apply(Supplier<NetworkManager.PacketContext> contextSupplier) {
         contextSupplier.get().queue(() -> {
