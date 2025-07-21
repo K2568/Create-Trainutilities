@@ -20,7 +20,7 @@ public class ChangeDoorSoundPacket extends BaseNetworkPacket<ChangeDoorSoundPack
 
     public ChangeDoorSoundPacket()  { }
 
-    public ChangeDoorSoundPacket(RegistryFriendlyByteBuf buf) {
+    public ChangeDoorSoundPacket(FriendlyByteBuf buf) {
         this(buf.readBlockPos(), buf.readInt());
     }
 
@@ -29,14 +29,14 @@ public class ChangeDoorSoundPacket extends BaseNetworkPacket<ChangeDoorSoundPack
         this.door_sound = door_sound;
     }
 
-    public void apply(Supplier<NetworkManager.PacketContext> contextSupplier, ChangeDoorSoundPacket packet) {
+    public void apply(ChangeDoorSoundPacket packet, Supplier<NetworkManager.PacketContext> contextSupplier) {
         contextSupplier.get().queue(() -> {
             BlockState state = contextSupplier.get().getPlayer().level().getBlockState(packet.pos);
             BlockState state2 = null, state3 = null, state4 = null;
             BlockPos pos2 = null, pos3 = null, pos4 = null;
             if (door_sound >= 0 && contextSupplier.get().getPlayer().level() != null) {
                 if (state.getBlock() instanceof TrainSlidingDoorBlock) {
-                    state = state.setValue(TrainSlidingDoorBlock.DOOR_SOUND, door_sound);
+                    state = state.setValue(TrainSlidingDoorBlock.DOOR_SOUND, packet.door_sound);
                     
                     if (state.getValue(TrainSlidingDoorBlock.HALF) == DoubleBlockHalf.LOWER && state.getValue(TrainSlidingDoorBlock.HINGE) == DoorHingeSide.LEFT) {
                         pos2 = packet.pos.above();
@@ -80,10 +80,10 @@ public class ChangeDoorSoundPacket extends BaseNetworkPacket<ChangeDoorSoundPack
                         return;
                     }
 
-                    state2 = state2.setValue(TrainSlidingDoorBlock.DOOR_SOUND, door_sound);
+                    state2 = state2.setValue(TrainSlidingDoorBlock.DOOR_SOUND, packet.door_sound);
                     if (pos3 != null && pos4 != null && state3 != null && state4 != null) {
-                        state3 = state3.setValue(TrainSlidingDoorBlock.DOOR_SOUND, door_sound);
-                        state4 = state4.setValue(TrainSlidingDoorBlock.DOOR_SOUND, door_sound);
+                        state3 = state3.setValue(TrainSlidingDoorBlock.DOOR_SOUND, packet.door_sound);
+                        state4 = state4.setValue(TrainSlidingDoorBlock.DOOR_SOUND, packet.door_sound);
                     }
                 }
             }
@@ -112,6 +112,8 @@ public class ChangeDoorSoundPacket extends BaseNetworkPacket<ChangeDoorSoundPack
 
     @Override
     public void handle(ChangeDoorSoundPacket packet, Supplier<NetworkManager.PacketContext> supplier) {
-        apply(supplier, packet);
+        apply(packet, supplier);
     }
+
+
 }

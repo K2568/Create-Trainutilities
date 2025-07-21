@@ -1,4 +1,2 @@
 - tags missing
-- item textures in screens missing
 - frameless glass, light cant pass through
-- networking -> changes were not send to server

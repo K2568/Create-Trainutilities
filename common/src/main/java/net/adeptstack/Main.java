@@ -43,9 +43,9 @@ public final class Main {
 
     static void networkInit() {
         DLNetworkManager.registerPackets(MOD_ID, List.of(
-                PlatformBlockPacket.class
-        ), List.of(
+                PlatformBlockPacket.class,
                 ChangeDoorSoundPacket.class
+        ), List.of(
         ));
     }
 
