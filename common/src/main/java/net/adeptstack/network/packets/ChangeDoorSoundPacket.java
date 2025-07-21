@@ -29,9 +29,9 @@ public class ChangeDoorSoundPacket extends BaseNetworkPacket<ChangeDoorSoundPack
         this.door_sound = door_sound;
     }
 
-    public void apply(Supplier<NetworkManager.PacketContext> contextSupplier) {
+    public void apply(Supplier<NetworkManager.PacketContext> contextSupplier, ChangeDoorSoundPacket packet) {
         contextSupplier.get().queue(() -> {
-            BlockState state = contextSupplier.get().getPlayer().level().getBlockState(pos);
+            BlockState state = contextSupplier.get().getPlayer().level().getBlockState(packet.pos);
             BlockState state2 = null, state3 = null, state4 = null;
             BlockPos pos2 = null, pos3 = null, pos4 = null;
             if (door_sound >= 0 && contextSupplier.get().getPlayer().level() != null) {
@@ -39,37 +39,37 @@ public class ChangeDoorSoundPacket extends BaseNetworkPacket<ChangeDoorSoundPack
                     state = state.setValue(TrainSlidingDoorBlock.DOOR_SOUND, door_sound);
                     
                     if (state.getValue(TrainSlidingDoorBlock.HALF) == DoubleBlockHalf.LOWER && state.getValue(TrainSlidingDoorBlock.HINGE) == DoorHingeSide.LEFT) {
-                        pos2 = pos.above();
+                        pos2 = packet.pos.above();
                         state2 = contextSupplier.get().getPlayer().level().getBlockState(pos2);
-                        if (contextSupplier.get().getPlayer().level().getBlockState(PlacementUtils.getPlaceDirectionLeft(pos, state.getValue(TrainSlidingDoorBlock.FACING))).getBlock() instanceof TrainSlidingDoorBlock) {
-                            pos3 = PlacementUtils.getPlaceDirectionLeft(pos, state.getValue(TrainSlidingDoorBlock.FACING));
+                        if (contextSupplier.get().getPlayer().level().getBlockState(PlacementUtils.getPlaceDirectionLeft(packet.pos, state.getValue(TrainSlidingDoorBlock.FACING))).getBlock() instanceof TrainSlidingDoorBlock) {
+                            pos3 = PlacementUtils.getPlaceDirectionLeft(packet.pos, state.getValue(TrainSlidingDoorBlock.FACING));
                             pos4 = pos3.above();
                             state3 = contextSupplier.get().getPlayer().level().getBlockState(pos3);
                             state4 = contextSupplier.get().getPlayer().level().getBlockState(pos4);
                         }
                     } else if (state.getValue(TrainSlidingDoorBlock.HALF) == DoubleBlockHalf.LOWER && state.getValue(TrainSlidingDoorBlock.HINGE) == DoorHingeSide.RIGHT) {
-                        pos2 = pos.above();
+                        pos2 = packet.pos.above();
                         state2 = contextSupplier.get().getPlayer().level().getBlockState(pos2);
-                        if (contextSupplier.get().getPlayer().level().getBlockState(PlacementUtils.getPlaceDirectionRight(pos, state.getValue(TrainSlidingDoorBlock.FACING))).getBlock() instanceof TrainSlidingDoorBlock) {
-                            pos3 = PlacementUtils.getPlaceDirectionRight(pos, state.getValue(TrainSlidingDoorBlock.FACING));
+                        if (contextSupplier.get().getPlayer().level().getBlockState(PlacementUtils.getPlaceDirectionRight(packet.pos, state.getValue(TrainSlidingDoorBlock.FACING))).getBlock() instanceof TrainSlidingDoorBlock) {
+                            pos3 = PlacementUtils.getPlaceDirectionRight(packet.pos, state.getValue(TrainSlidingDoorBlock.FACING));
                             pos4 = pos3.above();
                             state3 = contextSupplier.get().getPlayer().level().getBlockState(pos3);
                             state4 = contextSupplier.get().getPlayer().level().getBlockState(pos4);
                         }
                     } else if (state.getValue(TrainSlidingDoorBlock.HALF) == DoubleBlockHalf.UPPER && state.getValue(TrainSlidingDoorBlock.HINGE) == DoorHingeSide.LEFT) {
-                        pos2 = pos.below();
+                        pos2 = packet.pos.below();
                         state2 = contextSupplier.get().getPlayer().level().getBlockState(pos2);
-                        if (contextSupplier.get().getPlayer().level().getBlockState(PlacementUtils.getPlaceDirectionLeft(pos, state.getValue(TrainSlidingDoorBlock.FACING))).getBlock() instanceof TrainSlidingDoorBlock) {
-                            pos3 = PlacementUtils.getPlaceDirectionLeft(pos, state.getValue(TrainSlidingDoorBlock.FACING));
+                        if (contextSupplier.get().getPlayer().level().getBlockState(PlacementUtils.getPlaceDirectionLeft(packet.pos, state.getValue(TrainSlidingDoorBlock.FACING))).getBlock() instanceof TrainSlidingDoorBlock) {
+                            pos3 = PlacementUtils.getPlaceDirectionLeft(packet.pos, state.getValue(TrainSlidingDoorBlock.FACING));
                             pos4 = pos3.below();
                             state3 = contextSupplier.get().getPlayer().level().getBlockState(pos3);
                             state4 = contextSupplier.get().getPlayer().level().getBlockState(pos4);
                         }
                     } else if (state.getValue(TrainSlidingDoorBlock.HALF) == DoubleBlockHalf.UPPER && state.getValue(TrainSlidingDoorBlock.HINGE) == DoorHingeSide.RIGHT) {
-                        pos2 = pos.below();
+                        pos2 = packet.pos.below();
                         state2 = contextSupplier.get().getPlayer().level().getBlockState(pos2);
-                        if (contextSupplier.get().getPlayer().level().getBlockState(PlacementUtils.getPlaceDirectionRight(pos, state.getValue(TrainSlidingDoorBlock.FACING))).getBlock() instanceof TrainSlidingDoorBlock) {
-                            pos3 = PlacementUtils.getPlaceDirectionRight(pos, state.getValue(TrainSlidingDoorBlock.FACING));
+                        if (contextSupplier.get().getPlayer().level().getBlockState(PlacementUtils.getPlaceDirectionRight(packet.pos, state.getValue(TrainSlidingDoorBlock.FACING))).getBlock() instanceof TrainSlidingDoorBlock) {
+                            pos3 = PlacementUtils.getPlaceDirectionRight(packet.pos, state.getValue(TrainSlidingDoorBlock.FACING));
                             pos4 = pos3.below();
                             state3 = contextSupplier.get().getPlayer().level().getBlockState(pos3);
                             state4 = contextSupplier.get().getPlayer().level().getBlockState(pos4);
@@ -87,7 +87,7 @@ public class ChangeDoorSoundPacket extends BaseNetworkPacket<ChangeDoorSoundPack
                     }
                 }
             }
-            contextSupplier.get().getPlayer().level().setBlockAndUpdate(pos, state);
+            contextSupplier.get().getPlayer().level().setBlockAndUpdate(packet.pos, state);
             if (pos2 != null && state2 != null) {
                 contextSupplier.get().getPlayer().level().setBlockAndUpdate(pos2, state2);
             }
@@ -111,7 +111,7 @@ public class ChangeDoorSoundPacket extends BaseNetworkPacket<ChangeDoorSoundPack
     }
 
     @Override
-    public void handle(ChangeDoorSoundPacket changeDoorSoundPacket, Supplier<NetworkManager.PacketContext> supplier) {
-        apply(supplier);
+    public void handle(ChangeDoorSoundPacket packet, Supplier<NetworkManager.PacketContext> supplier) {
+        apply(supplier, packet);
     }
 }

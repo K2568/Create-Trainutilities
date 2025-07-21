@@ -40,14 +40,14 @@ public class PlatformBlockPacket extends BaseNetworkPacket<PlatformBlockPacket> 
     }
 
     @Override
-    public void handle(PlatformBlockPacket platformBlockPacket, Supplier<NetworkManager.PacketContext> supplier) {
-        apply(supplier);
+    public void handle(PlatformBlockPacket packet, Supplier<NetworkManager.PacketContext> supplier) {
+        apply(supplier, packet);
     }
 
 
-    public void apply(Supplier<NetworkManager.PacketContext> contextSupplier) {
+    public void apply(Supplier<NetworkManager.PacketContext> contextSupplier, PlatformBlockPacket packet) {
         contextSupplier.get().queue(() -> {
-            BlockState state = contextSupplier.get().getPlayer().level().getBlockState(pos);
+            BlockState state = contextSupplier.get().getPlayer().level().getBlockState(packet.pos);
             if (signblock >= 0) {
                 if (state.getBlock() instanceof PlatformBlockNL) {
                     state = state.setValue(PlatformBlockNL.SIGN_BLOCKS, signblock);
@@ -57,7 +57,7 @@ public class PlatformBlockPacket extends BaseNetworkPacket<PlatformBlockPacket> 
                     state = state.setValue(PlatformBlockCH.SIGN_BLOCKS, signblock);
                 }
             }
-            contextSupplier.get().getPlayer().level().setBlockAndUpdate(pos, state);
+            contextSupplier.get().getPlayer().level().setBlockAndUpdate(packet.pos, state);
         });
     }
 }
