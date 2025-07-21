@@ -1,0 +1,67 @@
+{
+  "type": "create:sequenced_assembly",
+  "ingredient": {
+    "tag": "trainutilities:sf_door_crafting_approved"
+  },
+  "transitional_item": {
+    "id": "trainutilities:incomplete_prototype_door_sf"
+  },
+  "sequence": [
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        { "item": "trainutilities:incomplete_prototype_door_sf" },
+        { "item": "trainutilities:processing_unit" }
+      ],
+      "results": [
+        { "id": "trainutilities:incomplete_prototype_door_sf" }
+      ]
+    },
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        { "item": "trainutilities:incomplete_prototype_door_sf" },
+        { "item": "trainutilities:sound_unit" }
+      ],
+      "results": [
+        { "id": "trainutilities:incomplete_prototype_door_sf" }
+      ]
+    },
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        { "item": "trainutilities:incomplete_prototype_door_sf" },
+        { "item": "trainutilities:rubber_seal" }
+      ],
+      "results": [
+        { "id": "trainutilities:incomplete_prototype_door_sf" }
+      ]
+    },
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        { "item": "trainutilities:incomplete_prototype_door_sf" },
+        { "item": "create:iron_sheet" }
+      ],
+      "results": [
+        { "id": "trainutilities:incomplete_prototype_door_sf" }
+      ]
+    },
+    {
+      "type": "create:pressing",
+      "ingredients": [
+        { "item": "trainutilities:incomplete_prototype_door_sf" }
+      ],
+      "results": [
+        { "id": "trainutilities:incomplete_prototype_door_sf" }
+      ]
+    }
+  ],
+  "results": [
+    {
+      "id": "trainutilities:prototype_door_sf",
+      "chance": 1.0
+    }
+  ],
+  "loops": 1
+}

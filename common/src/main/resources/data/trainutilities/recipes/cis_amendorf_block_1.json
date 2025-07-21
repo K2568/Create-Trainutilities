@@ -1,8 +1,0 @@
-{
-	"type": "minecraft:stonecutting",
-	"ingredient": {
-		"item": "minecraft:green_concrete"
-	},
-	"result": "trainutilities:cis_amendorf_block_1",
-	"count": 1
-}

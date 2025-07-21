@@ -1,8 +1,0 @@
-{
-  "type": "minecraft:stonecutting",
-  "ingredient": {
-    "item": "minecraft:black_terracotta"
-  },
-  "result": "trainutilities:budapest_block_black",
-  "count": 1
-}

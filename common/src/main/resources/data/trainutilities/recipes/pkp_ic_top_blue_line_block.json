@@ -1,8 +1,0 @@
-{
-  "type": "minecraft:stonecutting",
-  "ingredient": {
-    "item": "minecraft:white_concrete"
-  },
-  "result": "trainutilities:pkp_ic_top_blue_line_block",
-  "count": 1
-}

@@ -1,8 +1,0 @@
-{
-  "type": "minecraft:stonecutting",
-  "ingredient": {
-    "item": "minecraft:blue_concrete"
-  },
-  "result": "trainutilities:pkp_block_blue",
-  "count": 1
-}

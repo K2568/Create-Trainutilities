@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "create:framed_glass"
+  },
+  "result": {
+    "id": "trainutilities:frameless_glass",
+    "count": 1
+  }
+}

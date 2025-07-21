@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "trainutilities:prototype_door_sf"
+  },
+  "result": {
+    "id": "trainutilities:door_andesite_alloy",
+    "count": 1
+  }
+}

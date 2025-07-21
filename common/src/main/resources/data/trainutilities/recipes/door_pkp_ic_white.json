@@ -1,8 +1,0 @@
-{
-  "type": "minecraft:stonecutting",
-  "ingredient": {
-    "item": "trainutilities:prototype_door_sf"
-  },
-  "result": "trainutilities:door_pkp_ic_white",
-  "count": 1
-}

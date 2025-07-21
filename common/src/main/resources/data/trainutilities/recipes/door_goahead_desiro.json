@@ -1,8 +1,0 @@
-{
-  "type": "minecraft:stonecutting",
-  "ingredient": {
-    "item": "trainutilities:prototype_door_sf"
-  },
-  "result": "trainutilities:door_goahead_desiro",
-  "count": 1
-}

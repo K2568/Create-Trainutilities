@@ -1,8 +1,0 @@
-{
-  "type": "minecraft:stonecutting",
-  "ingredient": {
-    "item": "trainutilities:prototype_door_db"
-  },
-  "result": "trainutilities:door_cis_amendorf_2",
-  "count": 1
-}
