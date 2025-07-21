@@ -84,12 +84,16 @@ public class TrainUtilitiesBuilderTransformers {
                 .register();
     }
 
-    public static BlockEntry<Block> GlassBlock(String id, MapColor color) {
+    public static BlockEntry<TransparentBlock> GlassBlock(String id, MapColor color) {
         return REGISTRATE
-                .block(id, Block::new)
+                .block(id, TransparentBlock::new)
                 .initialProperties(() -> Blocks.GLASS)
-                .properties(p -> p.sound(SoundType.GLASS).mapColor(color).noOcclusion().isViewBlocking((s, w, b) -> false))
-                .addLayer(() -> RenderType::translucent)
+                .properties(p -> p.sound(SoundType.GLASS)
+                        .mapColor(color)
+                        .noOcclusion()
+                        .isViewBlocking((s, w, b) -> false)
+                        .isSuffocating((s, w, b) -> false))
+                .addLayer(() -> RenderType::cutout)
                 .transform(pickaxeOnly())
                 .tag(ModTags.AllBlockTags.FRAMEABLE.tag)
                 .loot((lr, block) -> lr.add(block, lr.createSingleItemTable(block)))
@@ -104,7 +108,7 @@ public class TrainUtilitiesBuilderTransformers {
                 .block(id, GlassPaneBlock::new)
                 .initialProperties(() -> Blocks.GLASS_PANE)
                 .properties(p -> p.sound(SoundType.GLASS).mapColor(color))
-                .addLayer(() -> RenderType::translucent)
+                .addLayer(() -> RenderType::cutout)
                 .transform(pickaxeOnly())
                 .tag(ModTags.AllBlockTags.FRAMEABLE.tag)
                 .loot((lr, block) -> lr.add(block, lr.createSingleItemTable(block)))

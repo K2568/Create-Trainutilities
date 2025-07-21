@@ -38,7 +38,7 @@ public class ModBlocks {
             TrainUtilitiesBuilderTransformers.LineBlock("budapest_block_black", MapColor.TERRACOTTA_BLACK);
 
     //glass
-    public static final BlockEntry<Block> FRAMELESS_GLASS =
+    public static final BlockEntry<TransparentBlock> FRAMELESS_GLASS =
             TrainUtilitiesBuilderTransformers.GlassBlock("frameless_glass", MapColor.NONE);
 
     public static  final  BlockEntry<GlassPaneBlock> FRAMELESS_GLASS_PANE =
