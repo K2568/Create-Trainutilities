@@ -30,8 +30,8 @@ public class PlatformBlockPacket extends BaseNetworkPacket<PlatformBlockPacket> 
 
     @Override
     public void encode(PlatformBlockPacket packet, RegistryFriendlyByteBuf buf) {
-        buf.writeBlockPos(pos);
-        buf.writeInt(signblock);
+        buf.writeBlockPos(packet.pos);
+        buf.writeInt(packet.signblock);
     }
 
     @Override

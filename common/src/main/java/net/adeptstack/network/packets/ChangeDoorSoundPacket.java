@@ -100,9 +100,9 @@ public class ChangeDoorSoundPacket extends BaseNetworkPacket<ChangeDoorSoundPack
     }
 
     @Override
-    public void encode(ChangeDoorSoundPacket changeDoorSoundPacket, RegistryFriendlyByteBuf buf) {
-        buf.writeBlockPos(pos);
-        buf.writeInt(door_sound);
+    public void encode(ChangeDoorSoundPacket packet, RegistryFriendlyByteBuf buf) {
+        buf.writeBlockPos(packet.pos);
+        buf.writeInt(packet.door_sound);
     }
 
     @Override

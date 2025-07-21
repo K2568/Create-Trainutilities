@@ -31,9 +31,7 @@ public class ClientWrapper {
                             String name = TextureNames.GetDEPlatformBlockTextureName(variant);
                             return new PlatformBlockDEPlacementScreen.TextureResult(ResourceLocation.fromNamespaceAndPath(MOD_ID, "textures/block/platformblocks/" + name), 256, 256);
                         }, (variant) -> {
-                            if (pos != null) {
                                 DLNetworkManager.sendToServer(new PlatformBlockPacket(pos, variant));
-                            }
                         },
                         "gui." + MOD_ID + ".selection_screen.blockplacementscreen_de", 1
                 )
