@@ -62,6 +62,6 @@ public class TrainSlidingDoorMovingInteraction extends SimpleBlockMovingInteract
 
     @Override
     protected boolean updateColliders() {
-        return true;
+        return false;
     }
 }
