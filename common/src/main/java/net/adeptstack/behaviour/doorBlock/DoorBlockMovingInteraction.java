@@ -46,15 +46,13 @@ public class DoorBlockMovingInteraction extends SimpleBlockMovingInteraction {
                 StructureTemplate.StructureBlockInfo doubleInfo = contraption.getBlocks()
                         .get(doublePos);
                 if (doubleInfo != null && TrainSlidingDoorBlock.isDoubleDoor(currentState, hinge, facing, doubleInfo.state())) {
-                    handlePlayerInteraction(null, InteractionHand.MAIN_HAND, doublePos, contraption.entity);
+                    BlockState newDoubleState = doubleInfo.state().cycle(DoorBlock.OPEN);
+                    setContraptionBlockData(contraption.entity, doublePos, new StructureTemplate.StructureBlockInfo(doubleInfo.pos(), newDoubleState, doubleInfo.nbt()));
                 }
             }
-            else {
-                float pitch = player.level().random.nextFloat() * 0.1F + 0.9F;
-                if (sound != null)
 
-                    playSound(player, sound, pitch);
-            }
+            if (sound != null)
+                player.playSound(sound, 1.0F, 1.0F);
         }
 
         return currentState;
@@ -62,6 +60,7 @@ public class DoorBlockMovingInteraction extends SimpleBlockMovingInteraction {
 
     @Override
     protected boolean updateColliders() {
-        return true;
+        // Return false so the hitbox doesn't move with the door and causes no collision
+        return false;
     }
 }
