@@ -62,6 +62,6 @@ public class DoorBlockMovingInteraction extends SimpleBlockMovingInteraction {
 
     @Override
     protected boolean updateColliders() {
-        return true;
+        return false;
     }
 }
